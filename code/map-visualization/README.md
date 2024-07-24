@@ -11,8 +11,6 @@ This directory contains scripts for plotting maps and other visualizations of th
         - `--print_stats`: An optional flag indicating whether to print the statistics of the data. Default is `False`.
     - Usage: `python scatter.py <csv_file> [--print_stats]`
     - Output: A scatter plot of the data and a statistics markdown file (if the `--print_stats` flag is used) under the `output/map-visualization/` directory of this repository.
-<br>
-<br>
 - `choropleth.py`: A script for plotting choropleth map of the data.
     - Required files (_paths from the root folder of this repository_): 
       - `data/South Carolina County Boundaries.geojson`: [download link](https://cartographyvectors.com/map/1123-south-carolina-with-county-boundaries)
