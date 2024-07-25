@@ -72,7 +72,7 @@ def main():
     parser.add_argument("csv_file", type=str, help="The path to the csv file")
     args = parser.parse_args()
 
-    year: str = os.path.basename(args.csv_file).split('_')[1].split('.')[0][-4:]
+    year: str = os.path.basename(args.csv_file).split('.')[-2][-4:]
 
     df = pd.read_csv(args.csv_file, low_memory=False)
     df['year'] = year
@@ -100,7 +100,7 @@ def main():
     accidents_by_county_year['cty'] = accidents_by_county_year['cty'].replace(county_dict)
 
     # Try adding the county boundaries from the GeoJSON file
-    file_name: str = "../../data/South Carolina County Boundaries.geojson"
+    file_name: str = "data/South Carolina County Boundaries.geojson"
     try:
         counties_gdf = gpd.read_file(file_name)
     except (fiona.errors.DriverError, FileNotFoundError):
@@ -129,11 +129,11 @@ def main():
         labels={'accidents': 'Number of Accidents'},
         hover_name='name',  # Add county name to hover info
         hover_data={'accidents': True, 'name': False},  # Show accidents, hide redundant name
-        title=f'Traffic Accidents in South Carolina Counties in {year}'
+        title='Traffic Accidents in South Carolina Counties Over Time'
     )
 
     # Show the figure
-    save_file: str = f"../../output/map-visualization/choropleth_{year}.html"
+    save_file: str = f"./output/choropleth_{year}.html"
     fig.write_html(save_file)
     print(f"The choropleth map has been saved to '{save_file}'.")
 

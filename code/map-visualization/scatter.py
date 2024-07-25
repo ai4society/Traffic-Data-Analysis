@@ -1,5 +1,4 @@
 from pathlib import Path
-from shutil import make_archive, rmtree
 import pandas as pd
 import folium as fm
 from folium.plugins import MarkerCluster
@@ -70,25 +69,27 @@ def check_cols(col1: str, col2: str, df: pd.DataFrame, print_string: str) -> tup
     return print_string, df
 
 
-def filter_points(df: pd.DataFrame, len_0: int, print_string: str, year: str) -> tuple[str, pd.DataFrame]:
+def filter_points(df: pd.DataFrame, len_0: int, print_string: str, year: str, print_stats: bool) -> tuple[str, pd.DataFrame]:
     """
     Filter points and calculate exclusion percentage.
     @param df: The DataFrame
     @param len_0: The initial length of the data
     @param print_string: The string that will contain the data statistics
     @param year: The year of the data
+    @param print_stats: Whether to print the statistics file or not
     @return: The print string and the DataFrame
     """
 
     # Load the GeoJSON file in a try-except block
-    file_name: str = "../../data/south carolina.geojson"
+    file_name: str = "data/south carolina.geojson"
     try:
         with open(file_name, 'r') as f:
             sc_geojson = json.load(f)
     except FileNotFoundError:
         print(f"The '{file_name}' was not found. Exiting...")
-        # Remove the data_statistics file
-        os.remove(f"./output/data_statistics_{year}.md")
+        # Remove the data_statistics file if args.print_stats is True
+        if print_stats:
+            os.remove(f"./output/data_statistics_{year}.md")
         exit()
 
     # Extract coordinates and create a Shapely polygon
@@ -200,7 +201,7 @@ def create_map(df: pd.DataFrame, year: str, color_map: dict[int, str]) -> None:
     }
 
     # Try adding the county boundaries from the GeoJSON file
-    file_name: str = "../../data/South Carolina County Boundaries.geojson"
+    file_name: str = "data/South Carolina County Boundaries.geojson"
     try:
         fm.GeoJson(
             data=(open(file_name, 'r').read()),
@@ -211,17 +212,17 @@ def create_map(df: pd.DataFrame, year: str, color_map: dict[int, str]) -> None:
         exit()
 
     # Save the map
-    f_name: str = f"../../output/map-visualization/sc_incidents_{year}.html"
+    f_name: str = f"./output/sc_incidents_{year}.html"
     m.save(f_name)
     print(f"Map has been saved as '{f_name}'")
 
 
-def mapping(file_path: str, year: str) -> None:
+def mapping(file_path: str, year: str, print_stats: bool) -> None:
     """
     Process the data and create the map.
-    :param file_path:
-    :param year:
-    :return:
+    :param file_path: The path to the csv file
+    :param year: The year of the data
+    :param print_stats: Whether to print the statistics file or not
     """
     print(f"Processing data for the year {year}...")
 
@@ -253,16 +254,17 @@ def mapping(file_path: str, year: str) -> None:
 
     # Filter data
     print("Filtering data...")
-    print_string, df = filter_points(df, len_0, print_string, year)
-
-    # Save the data statistics to a file
+    print_string, df = filter_points(df, len_0, print_string, year, print_stats)
     print_string += "\n---"
-    file_name: str = f"../../output/map-visualization/data_statistics_{year}.md"
-    print(f"Saving data statistics to '{file_name}'")
 
-    with open(file_name, 'a') as f:
-        f.write(f"\n\n## Data Statistics for the year {year}\n")
-        f.write(print_string)
+    # Save the data statistics to a file if args.print_stats is True
+    if print_stats:
+        file_name: str = f"./output/data_statistics_{year}.md"
+        print(f"Saving data statistics to '{file_name}'")
+
+        with open(file_name, 'a') as f:
+            f.write(f"\n\n## Data Statistics for the year {year}\n")
+            f.write(print_string)
 
     # 5 of the possible colors for Folium
     possible_colors = ['blue', 'darkgreen', 'purple', 'orange', 'red']
@@ -286,15 +288,18 @@ def main():
                         help="Print the statistics file. Default is False. To print, use this flag.")
     args = parser.parse_args()
 
-    year: str = os.path.basename(args.csv_file).split('_')[1].split('.')[0][-4:]
+    year: str = os.path.basename(args.csv_file).split('.')[-2][-4:]
+    Path("./output").mkdir(parents=True, exist_ok=True)
 
     # If printing stats, the reinitialize the data_stats file
     if args.print_stats:
-        print("Reinitializing the data statistics file...")
-        with open(f"../../output/map-visualization/data_statistics_{year}.md", 'w') as f:
+        print("Since the print_stats flag is True, the data statistics file will be initialized.")
+        with open(f"./output/data_statistics_{year}.md", 'w') as f:
             f.write("# Data Statistics\n")
+    else:
+        print("Printing data statistics is turned off.")
 
-    mapping(args.csv_file, year)
+    mapping(args.csv_file, year, print_stats=args.print_stats)
 
 
 if __name__ == "__main__":
