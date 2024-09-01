@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sidebar toggle
     sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
+        sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
     });
 
     // Dark mode toggle

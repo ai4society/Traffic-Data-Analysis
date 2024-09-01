@@ -4,6 +4,9 @@
     --background-color: #f4f4f4;
     --text-color: #333;
     --sidebar-width: 250px;
+    --header-height: 60px;
+    --footer-height: 50px;
+    --border-radius: 10px;
 }
 
 body.dark-mode {
@@ -33,6 +36,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: var(--header-height);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
 h1 {
@@ -42,7 +47,8 @@ h1 {
 
 main {
     display: flex;
-    height: calc(100vh - 60px - 50px); /* Subtracting header and footer height */
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    padding: 1rem;
 }
 
 #sidebar {
@@ -51,6 +57,8 @@ main {
     color: white;
     padding: 1rem;
     transition: transform 0.3s;
+    border-radius: var(--border-radius);
+    margin-right: 1rem;
 }
 
 .sidebar-content {
@@ -69,10 +77,11 @@ main {
     cursor: pointer;
     transition: background-color 0.3s;
     position: relative;
+    border-radius: var(--border-radius);
 }
 
 .tab:hover, .tab.active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--primary-color);
 }
 
 .tab i {
@@ -93,6 +102,7 @@ main {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
+    z-index: 10;
 }
 
 .tab:hover .tooltip {
@@ -103,6 +113,8 @@ main {
     flex-grow: 1;
     padding: 1rem;
     overflow-y: auto;
+    background-color: white;
+    border-radius: var(--border-radius);
 }
 
 #mapContainer {
@@ -114,6 +126,7 @@ iframe {
     width: 100%;
     height: 100%;
     border: none;
+    border-radius: var(--border-radius);
 }
 
 footer {
@@ -123,6 +136,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: var(--footer-height);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .social-share button {
@@ -143,19 +158,17 @@ footer {
 }
 
 @media (max-width: 768px) {
-    #sidebar {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        height: calc(100% - 60px - 50px);
-        transform: translateX(-100%);
+    main {
+        flex-direction: column;
     }
 
-    #sidebar.active {
-        transform: translateX(0);
+    #sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
 
     .content {
-        margin-left: 0;
+        height: calc(100vh - var(--header-height) - var(--footer-height) - 300px);
     }
 }
