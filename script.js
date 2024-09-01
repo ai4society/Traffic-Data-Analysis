@@ -34,12 +34,4 @@ document.addEventListener('DOMContentLoaded', () => {
             loadVisualization(tab.dataset.map);
         });
     });
-
-    // Social share functionality (placeholder)
-    const shareButtons = document.querySelectorAll('.social-share button');
-    shareButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            alert('Sharing functionality to be implemented');
-        });
-    });
 });

@@ -140,15 +140,6 @@ footer {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.social-share button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    cursor: pointer;
-}
-
 #darkModeToggle, #sidebarToggle {
     background: none;
     border: none;
