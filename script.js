@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapFrame = document.getElementById('mapFrame');
     const tabs = document.querySelectorAll('.tab');
 
+    // Function to load a visualization
+    function loadVisualization(src) {
+        mapFrame.src = src;
+    }
+
+    // Load default visualization
+    loadVisualization('./output/map-visualization/choropleth.html');
+
     // Sidebar toggle
     sidebarToggle.addEventListener('click', () => {
         sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
@@ -23,22 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            mapFrame.src = tab.dataset.map;
+            loadVisualization(tab.dataset.map);
         });
     });
-
-    // Lazy loading
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const iframe = entry.target;
-                iframe.src = iframe.dataset.src;
-                observer.unobserve(iframe);
-            }
-        });
-    });
-
-    observer.observe(mapFrame);
 
     // Social share functionality (placeholder)
     const shareButtons = document.querySelectorAll('.social-share button');

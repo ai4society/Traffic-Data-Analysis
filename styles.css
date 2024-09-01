@@ -172,3 +172,27 @@ footer {
         height: calc(100vh - var(--header-height) - var(--footer-height) - 300px);
     }
 }
+
+a:link {
+    color: #3498db;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+color: #cedc00;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+color: #F4EBD0;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+color: #D6DFE6;
+background-color: transparent;
+text-decoration: underline;
+}
