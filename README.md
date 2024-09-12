@@ -1,4 +1,4 @@
-# ALIVE@25 Program Effectiveness Analysis
+# Traffic Data Analysis
 
 This repository analyzes the effectiveness of the ALIVE@25 program in reducing the number of car accidents for young drivers in South Carolina. It includes various types of analysis such as geospatial analysis, collision data analysis, and more.
 
