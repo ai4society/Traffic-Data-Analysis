@@ -3,9 +3,8 @@
     --secondary-color: #2c3e50;
     --background-color: #f4f4f4;
     --text-color: #333;
-    --sidebar-width: 250px;
+    --sidebar-width: 300px;
     --header-height: 60px;
-    --footer-height: 50px;
     --border-radius: 10px;
 }
 
@@ -47,7 +46,7 @@ h1 {
 
 main {
     display: flex;
-    height: calc(100vh - var(--header-height) - var(--footer-height));
+    height: calc(100vh - var(--header-height));
     padding: 1rem;
 }
 
@@ -59,17 +58,41 @@ main {
     transition: transform 0.3s;
     border-radius: var(--border-radius);
     margin-right: 1rem;
+    overflow-y: auto;
 }
 
 .sidebar-content {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+}
+
+.sidebar-section:last-child {
+    border-bottom: none;
+}
+
+.sidebar-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.sidebar-section p {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .tab {
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.8rem;
     margin: 0.5rem 0;
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
@@ -78,6 +101,8 @@ main {
     transition: background-color 0.3s;
     position: relative;
     border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    width: 100%;
 }
 
 .tab:hover, .tab.active {
@@ -85,34 +110,13 @@ main {
 }
 
 .tab i {
-    margin-right: 0.5rem;
-}
-
-.tooltip {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    width: 200px;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    z-index: 10;
-}
-
-.tab:hover .tooltip {
-    opacity: 1;
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
 }
 
 .content {
     flex-grow: 1;
     padding: 1rem;
-    overflow-y: auto;
     background-color: white;
     border-radius: var(--border-radius);
 }
@@ -129,23 +133,32 @@ iframe {
     border-radius: var(--border-radius);
 }
 
-footer {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: var(--footer-height);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-}
-
 #darkModeToggle, #sidebarToggle {
     background: none;
     border: none;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+.contact-info {
+    margin-top: 0.5rem;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.button-description {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.3rem 0 1rem 0.5rem;
+    font-style: italic;
 }
 
 @media (max-width: 768px) {
@@ -157,33 +170,10 @@ footer {
         width: 100%;
         margin-right: 0;
         margin-bottom: 1rem;
+        max-height: 300px;
     }
 
     .content {
-        height: calc(100vh - var(--header-height) - var(--footer-height) - 300px);
+        height: calc(100vh - var(--header-height) - 332px);
     }
-}
-
-a:link {
-    color: #3498db;
-    background-color: transparent;
-    text-decoration: none;
-}
-  
-a:visited {
-color: #cedc00;
-background-color: transparent;
-text-decoration: none;
-}
-
-a:hover {
-color: #F4EBD0;
-background-color: transparent;
-text-decoration: underline;
-}
-
-a:active {
-color: #D6DFE6;
-background-color: transparent;
-text-decoration: underline;
 }

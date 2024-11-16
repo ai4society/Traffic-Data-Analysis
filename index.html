@@ -21,22 +21,48 @@
     <main>
         <nav id="sidebar">
             <div class="sidebar-content">
-                <h2>Visualizations</h2>
-                <button class="tab active" data-map="./output/map-visualization/choropleth.html" aria-label="View SC Collision Data Distribution">
-                    <i class="fas fa-map"></i>
-                    <span>SC Collision Data Distribution</span>
-                    <div class="tooltip">Interactive time-based choropleth showing county-based collision data distribution</div>
-                </button>
-                <button class="tab" data-map="./output/map-visualization/heat_map.html" aria-label="View Heat-Map of Collisions">
-                    <i class="fas fa-fire"></i>
-                    <span>Heat-Map of Collisions</span>
-                    <div class="tooltip">Interactive heat map of collisions throughout the years</div>
-                </button>
-                <button class="tab" data-map="./output/map-visualization/choropleth_with_popups.html" aria-label="View Collision Trends">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Collision Trends</span>
-                    <div class="tooltip">County-based choropleth with cumulative collision scores and line graphs</div>
-                </button>
+                <section class="sidebar-section">
+                    <h2>Project Overview</h2>
+                    <p>This project analyzes traffic collision data across South Carolina to identify patterns, trends, and high-risk areas. Our interactive visualizations help understand the spatial and temporal distribution of traffic incidents throughout the state.</p>
+                    <p>The analysis combines multiple years of collision data to provide insights that can be valuable for policy makers, law enforcement, and the general public in improving road safety.</p>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2>Visualizations</h2>
+                    <button class="tab active" data-map="./output/map-visualization/choropleth.html">
+                        <i class="fas fa-map"></i>
+                        <span>County Distribution</span>
+                    </button>
+                    <p class="button-description">Interactive time-based choropleth showing county-based collision data distribution. Compare incident rates across different regions and time periods.</p>
+
+                    <button class="tab" data-map="./output/map-visualization/heat_map.html">
+                        <i class="fas fa-fire"></i>
+                        <span>Collision Hotspots</span>
+                    </button>
+                    <p class="button-description">Dynamic heat map highlighting areas with high concentration of traffic incidents. Identify dangerous zones and seasonal patterns.</p>
+
+                    <button class="tab" data-map="./output/map-visualization/choropleth_with_popups.html">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Temporal Trends</span>
+                    </button>
+                    <p class="button-description">County-based visualization with cumulative collision scores and interactive line graphs showing historical trends and patterns.</p>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2>Data Sources</h2>
+                    <p>Our analysis utilizes official collision data from the South Carolina Department of Health and Environmental Control (DHEC), South Carolina Department of Public Safety (SCDPS), and National Safety Council Southeastern Chapter (NSCSC).</p>
+                    <p>The dataset includes detailed information about traffic incidents, including location, time, severity, and other contributing factors. Additional demographic and geographic data are sourced from the US Census Bureau to provide context and enable per-capita analysis.</p>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2>Contact Information</h2>
+                    <p>For questions about the analysis or to request additional information, please contact:</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:niting@email.sc.edu">niting@email.sc.edu</a></p>
+                        <p><i class="fas fa-building"></i> <a href="https://ai4society.github.io/">The AI4Society Group</a>, <a href="https://aiisc.ai/">AIISC</a></p>
+                        <p><i class="fas fa-university"></i> <a href="https://sc.edu/">University of South Carolina</a></p>
+                    </div>
+                </section>
             </div>
         </nav>
         <div class="content">
@@ -45,10 +71,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>Data source: South Carolina Department of Public Safety</p>
-        <p>Contact: <a href="mailto:niting@email.sc.edu">niting@email.sc.edu</a></p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
