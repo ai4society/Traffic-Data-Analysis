@@ -120,26 +120,20 @@ crosstab.index = crosstab.index.map(label_mapping)
 fig, ax = plt.subplots(figsize=(14, 9))
 crosstab.plot(kind='bar', stacked=True, ax=ax, width=0.8)
 
-# Customize the plot
+# Customize the plot with adjusted font sizes
 plt.title('Traffic Way Class Distribution Across County Categories for 2018',
-          fontsize=22, fontweight='bold', pad=20)
-plt.xlabel('Traffic Way Class', fontsize=20, labelpad=10)
-plt.ylabel('Collision Count (log scale)', fontsize=20, labelpad=10)
+          fontsize=28, fontweight='bold', pad=20, loc='left')
+plt.xlabel('Traffic Way Class', fontsize=24, labelpad=10)
+plt.ylabel('Collision Count (log scale)', fontsize=24, labelpad=10)
 plt.yscale('log')
 
 # Rotate x-axis labels and adjust their position
-plt.xticks(rotation=0, ha='center', fontsize=12)
-plt.gca().tick_params(axis='both', which='major', labelsize=16)
-
-# # Add value labels on the bars
-# for c in ax.containers:
-#     ax.bar_label(c, label_type='center', fontsize=10, fontweight='bold', color='white')
+plt.xticks(rotation=0, ha='center', fontsize=22)
+plt.gca().tick_params(axis='both', which='major', labelsize=18)
 
 # Customize legend
-plt.legend(title='County Category', title_fontsize='14', fontsize='12', loc='upper right')
-
-# Add a grid for better readability
-# plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.legend(title='County Category', title_fontsize=26, fontsize=24, loc='upper right', 
+           frameon=True, shadow=True, edgecolor='black')
 
 # Adjust layout and save the plot
 plt.tight_layout()
