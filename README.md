@@ -41,10 +41,18 @@ The [interactive traffic visualization](https://ai4society.github.io/Traffic-Dat
 
 ## Collaborators
 
-- USC College of Engineering and Computing & College of Education
-- Office of Injury and Violence Prevention within the Department of Health and Environmental Control (DHEC)
-- National Safety Council Southeastern Chapter (NSCSC)
-- Office of Highway Safety and Justice Programs (OHSJP) within the South Carolina Department of Public Safety (SCDPS)
+- Nitin Gupta, Bharath Muppasani, Biplav Srivastava, Lucas Vasconcelos
+    - USC College of Engineering and Computing & College of Education
+- Emma Kennedy, Karilyn Tremblay, and Kevin Poore:
+    - Office of Injury and Violence Prevention within the Department of Health and Environmental Control (DHEC)
+- Melissa Reck and Todd Buehrig
+    - National Safety Council Southeastern Chapter (NSCSC)
+- Ross Hartfield and others
+    - Office of Highway Safety and Justice Programs (OHSJP) within the South Carolina Department of Public Safety (SCDPS)
+- Saina Srivastava and Aarohi Goel
+    - Duke University, BASIS Independent Silicon Valley High School
+    - Work done during summer internship at USC.
+
 
 ## [License](./LICENSE)
 
