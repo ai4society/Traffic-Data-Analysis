@@ -1,6 +1,25 @@
 # Traffic Data Analysis
 
-This repository analyzes the effectiveness of the [Alive@25](https://www.scnsc.org/defensive-driving/alive-25) program in reducing the number of car accidents for young drivers in South Carolina. It includes various types of analysis such as geospatial analysis, collision data analysis, and more.
+This repository analyzes the effectiveness of the [Alive@25](https://www.scnsc.org/defensive-driving/alive-25) program in reducing the number of car accidents for young drivers in South Carolina. It includes various types of analysis, such as geospatial analysis, collision data analysis, and more.
+
+## Publication
+
+This work has been published in the 2025 AAAI Conference on Artificial Intelligence:
+
+**[Analyzing the Effectiveness of Road Safety Interventions: A Case Study of the Alive@25 Program in South Carolina](https://ojs.aaai.org/index.php/AAAI/article/view/35260)**
+
+If you use this work in your research, please cite:
+```bibtex
+@inproceedings{gupta2025towards,
+  title={Towards Enhancing Road Safety in South Carolina Using Insights from Traffic and Driver-Education Data (Student Abstract)},
+  author={Gupta, Nitin and Muppasani, Bharath and Srivastava, Saina and Goel, Aarohi and Hartfield, Ross and Buehrig, Todd and Reck, Melissa and Kennedy, Emma and Poore, Kevin and Tremblay, Karilyn and others},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={39},
+  number={28},
+  pages={29385--29387},
+  year={2025}
+}
+```
 
 ## Repository Structure
 
